@@ -44,8 +44,8 @@ $(function() {
 						url : 'loginAction',
 						type : 'POST',
 						data : {
-							manager : $('#adminname').val(),
-							password : $('#adminpwd').val(),
+							adminname : $('#adminname').val(),
+							adminpwd : $('#adminpwd').val(),
 						},
 						beforeSend : function() {
 							$.messager.progress({
