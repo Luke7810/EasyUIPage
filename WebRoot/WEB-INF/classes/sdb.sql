@@ -12,6 +12,20 @@ create table `student` (
 	`sid` varchar ,
 	`email` varchar 
 ); 
+
+CREATE TABLE `admininfor`(
+`id` INT NOT NULL AUTO_INCREMENT,
+`adminname` VARCHAR(20) NOT NULL,
+`adminpwd` VARCHAR(20) NOT NULL,
+`author` VARCHAR(50),
+`createdate` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+PRIMARY KEY(`id`)
+) ENGINE=INNODB DEFAULT CHARSET=utf8;
+
+INSERT INTO `admininfor` (`id`, `adminname`, `adminpwd`, `author`, `createdate`) VALUES (NULL, 'admin-1', '12345', '1,2,3', CURRENT_TIMESTAMP); 
+INSERT INTO `admininfor` (`id`, `adminname`, `adminpwd`, `author`, `createdate`) VALUES (NULL, 'admin-2', '23456', '1,3', CURRENT_TIMESTAMP); 
+INSERT INTO `admininfor` (`id`, `adminname`, `adminpwd`, `author`, `createdate`) VALUES (NULL, 'admin-3', '11111', '1', CURRENT_TIMESTAMP); 
+
 insert into `student` (`id`, `sname`, `age`, `sid`, `email`) values('1','刘德华','40','001','kjhjdf@sdf');
 insert into `student` (`id`, `sname`, `age`, `sid`, `email`) values('2','刘强','38','002','sdd123@sds');
 insert into `student` (`id`, `sname`, `age`, `sid`, `email`) values('3','张学友','50','003','4544@dff.c');

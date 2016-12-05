@@ -15,6 +15,14 @@
 				<param name="contentType">text/html</param>
 				<param name="inputName">inputStream</param>
 			</result> 
-        </action>  
+        </action>
+        
+        <action name="loginAction" class="loginAction" method="checkAdminLogin">  
+            <result name="login" type="stream">
+				<param name="contentType">text/html</param>
+				<param name="inputName">inputStream</param>
+			</result> 
+        </action>
+        
     </package>
 </struts>

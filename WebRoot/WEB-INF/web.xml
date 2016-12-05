@@ -7,7 +7,7 @@
   <display-name></display-name>	
   <welcome-file-list>
   	<!-- Default URL is: http://127.0.0.1:8080/UserRegister/userInforAction!regist -->
-    <welcome-file>index.jsp</welcome-file>
+    <welcome-file>login.jsp</welcome-file>
   </welcome-file-list>
   
  	<!-- 启动监听器，在Application开启后就初始化Spring的所有beans -->
