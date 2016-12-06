@@ -3,26 +3,30 @@ package com.luke.student.action;
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
 import java.io.UnsupportedEncodingException;
+import java.util.Map;
 
 import javax.annotation.Resource;
 
+import org.apache.struts2.interceptor.SessionAware;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
 import com.luke.student.service.AdminService;
 
-@Component("loginAction")
+@Component("accessAction")
 @Scope("prototype")
-public class AdminAction {
+public class AdminAction implements SessionAware{
 	private AdminService adminService;
 	private String adminname;
 	private String adminpwd;
 	private InputStream inputStream;
+	private Map<String, Object> session;
 	
 	public String checkAdminLogin() {
 		try {
 			if(adminService.checkAdminLogin(adminname, adminpwd)){
 				inputStream = new ByteArrayInputStream("1".getBytes("UTF-8"));
+				session.put("admin", adminname);
 			}else{
 				inputStream = new ByteArrayInputStream("0".getBytes("UTF-8"));
 			}
@@ -30,6 +34,13 @@ public class AdminAction {
 			e.printStackTrace();
 		}
 		return "login";
+	}
+	
+	public String adminLogout() throws UnsupportedEncodingException {
+		session.put("admin", "");
+		session.clear();
+		inputStream = new ByteArrayInputStream("1".getBytes("UTF-8"));
+		return "logout";
 	}
 	
 	//-------All Setter and getter---------
@@ -59,6 +70,16 @@ public class AdminAction {
 
 	public void setInputStream(InputStream inputStream) {
 		this.inputStream = inputStream;
+	}
+
+	@Override
+	public void setSession(Map<String, Object> session) {
+		this.session = session;
+		
+	}
+
+	public Map<String, Object> getSession() {
+		return session;
 	}
 	
 	

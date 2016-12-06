@@ -10,7 +10,7 @@
 		"children":[{
 			"id":111,
 			"text":"User List",
-			"url": "datagrid_layout.html"
+			"url": "student"
 		},{
 			"id":112,
 			"text":"User Form",
