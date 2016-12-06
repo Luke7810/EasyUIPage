@@ -22,7 +22,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	
 	<script type="text/javascript" src="<%=basePath%>js/framework/jquery.min.js"></script>
 	<script type="text/javascript" src="<%=basePath%>js/framework/jquery.easyui.min.js"></script>
-	
+	<script type="text/javascript" src="<%=basePath%>js/student.js"></script>
 	
 	<!--
 	<link rel="stylesheet" type="text/css" href="styles.css">
@@ -30,16 +30,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   </head>
   
   <body>
-    <div class="easyui-calendar" style="width:250px;height:250px;"></div>
-    
-    <table id="dg" title="Custom DataGrid Pager" style="width:700px;height:250px"
-			data-options="rownumbers:true,
-								singleSelect:true,
-								pagination:true,
-								pageSize : 5,
-								pageList : [ 5, 10, 15, 20 ],
-								url:'json.action',
-								method:'get'">
+    <table id="dg" title="Custom DataGrid Pager" 
+			>
 		<thead>
 			<tr>
 				<th data-options="field:'sid',width:100,align:'center'">学生学号</th>  
@@ -51,9 +43,4 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	</table>
      
   </body>
-  <script type="text/javascript">
-		$(function(){
-			var pager = $('#dg').datagrid().datagrid('getPager');	// get the pager of datagrid			
-		})
-  </script>
 </html>

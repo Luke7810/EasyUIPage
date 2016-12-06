@@ -59,7 +59,7 @@ $(function() {
 							} else {
 								$.messager.alert('login failed！', 'user name or password error!',
 										'warning', function() {
-											$('#password').select();
+											$('#adminpwd').select();
 										});
 							}
 						}

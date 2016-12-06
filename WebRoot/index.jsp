@@ -25,14 +25,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
      <!-- 项目页面头信息 -->
     <div data-options="region:'north'" style="height:60px; background-color: #add8e6;" >
         <div class="logo">Demo System</div>
-        <div class="logout">Welcome: Admin | <a href="">Logout</a></div>
+        <div class="logout">Welcome: <%=session.getAttribute("admin") %> | <a name="logout">Logout</a></div>
     </div>
 
     <!-- 项目页面导航信息-->
     <div data-options="region:'west',split:true,iconCls:'icon-tip'" title="Navigation" style="width:180px;">
         <div class="easyui-accordion" data-options="fit:true,border:false">
             <div title="User Management" style="padding:10px;" data-options="selected:true">
-                <ul id="nav" class="easyui-tree" data-options="url:'data/tree_data1.json',method:'get',animate:true,dnd:true,lines:true"></ul>
+                <ul id="nav" class="easyui-tree"></ul>
             </div>
             <div title="Product Management" style="padding:10px;">
                 content2
@@ -53,4 +53,5 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   </body>
 <script type="text/javascript" src="<%=basePath%>js/framework/jquery.min.js"></script>
 <script type="text/javascript" src="<%=basePath%>js/framework/jquery.easyui.min.js"></script>
+<script type="text/javascript" src="<%=basePath%>js/index.js"></script>
 </html>
