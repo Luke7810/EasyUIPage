@@ -29,22 +29,53 @@ public class StudentAction extends ActionSupport{
 	private String rows;
 	private String page;
 	private InputStream inputStream;
-	
-	
-	 
-	 public String getStu() throws UnsupportedEncodingException {
+	private int id;
+	private String sid;
+	private String sname;
+	private int age;
+	private String email;
+
+	 public String getStu() {
 		 
-		 List<Student> ls = studentService.getStuByPage(page, rows);
-		 
-		 Map<String,Object> map = new HashMap<String,Object>();
-		 map.put("rows", ls);
-		 map.put("total", studentService.countAllStu());
-		 String jsonString = JSON.toJSONString(map);
-		 inputStream = new ByteArrayInputStream(jsonString.getBytes("UTF-8"));
+		 try {
+			List<Student> ls = studentService.getStuByPage(page, rows);
+			 
+			 Map<String,Object> map = new HashMap<String,Object>();
+			 map.put("rows", ls);
+			 map.put("total", studentService.countAllStu());
+			 String jsonString = JSON.toJSONString(map);
+			 inputStream = new ByteArrayInputStream(jsonString.getBytes("UTF-8"));
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		 
 		 return "ajax-success";
 	 }
-
+	 
+	 
+	 
+	 public String addStu() {
+		 Student st = new Student();
+		 
+		 st.setAge(age);
+		 st.setEmail(email);
+		 st.setSid(sid);
+		 st.setSname(sname);
+		 
+		 try {
+			if(studentService.addStudent(st)){
+				inputStream = new ByteArrayInputStream("1".getBytes("UTF-8"));
+			}else{
+				inputStream = new ByteArrayInputStream("0".getBytes("UTF-8"));
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		 
+		return "ajax-success";
+	 }
+	 
+	//-----------All getter and setter----------------------
 	public StudentService getStudentService() {
 		return studentService;
 	}
@@ -82,6 +113,46 @@ public class StudentAction extends ActionSupport{
 
 	public void setInputStream(InputStream inputStream) {
 		this.inputStream = inputStream;
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public String getSid() {
+		return sid;
+	}
+
+	public void setSid(String sid) {
+		this.sid = sid;
+	}
+
+	public String getSname() {
+		return sname;
+	}
+
+	public void setSname(String sname) {
+		this.sname = sname;
+	}
+
+	public int getAge() {
+		return age;
+	}
+
+	public void setAge(int age) {
+		this.age = age;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
 	}
 
 }

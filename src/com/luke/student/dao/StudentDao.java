@@ -18,11 +18,13 @@ import com.luke.student.module.Student;
 @Component("studentDao")
 public class StudentDao {
 	private HibernateTemplate hibernateTemplate;
-
+	
+	//----- Count all student number----------------
 	public int countAllStu() {
 		return hibernateTemplate.find("from Student").size();
 	}
 
+	//------ List student with offset and page size------------------------
 	public List<Student> getStubyPage(final int offset, final int length) {
 
 		List list = getHibernateTemplate().executeFind(new HibernateCallback() {
@@ -37,6 +39,40 @@ public class StudentDao {
 		});
 		return list;
 	}
+	
+	//------get student by id-----------------------
+	public Student getStById(int id){
+		List<Student> ls = hibernateTemplate.find("from Student st where st.id="+id);
+		if(ls.size()>0){
+			return ls.get(0);
+		}
+		return null;
+	}
+	
+	//------- save student---------------------------
+	public void saveStudent(Student st){
+		hibernateTemplate.save(st);
+	}
+	
+	//------ update student----------------------------
+	public void updateStudent(Student st){
+		hibernateTemplate.clear();
+		hibernateTemplate.update(st);
+	}
+	
+	//------- delele student---------------------------
+	public void deleteStudent(Student st){
+		hibernateTemplate.clear();
+		hibernateTemplate.delete(st);
+	}
+	
+	public void deleteStudent(int id){
+		Student st = getStById(id);
+		if(st != null){
+			deleteStudent(st);
+		}
+	}
+	
 
 	public HibernateTemplate getHibernateTemplate() {
 		return hibernateTemplate;

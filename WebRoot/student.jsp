@@ -7,8 +7,14 @@
 %>
 <%@taglib prefix="s" uri="/struts-tags"%>
 
-
+<!-- Student datagrid list  -->
 <table id="dg" title="Student List">
+	<thead data-options="frozen:true">
+                <tr>
+                    <th data-options="field:'ck',checkbox:true"></th>
+                    <th data-options="field:'id',width:100,align:'center'">ID</th>
+                </tr>
+            </thead>
 	<thead>
 		<tr>
 			<th data-options="field:'sid',width:100,align:'center'">学生学号</th>
@@ -19,12 +25,12 @@
 	</thead>
 </table>
 
-//管理员模块的工具栏
+<!-- datagrid 工具栏 -->
 <div id="manage_tool" style="padding:2px 5px;">
 	<div style="margin-bottom:5px;">
-		<a href="#" class="easyui-linkbutton" iconCls="icon-add" plain="true" onclick="manage_tool.add();">Add</a> 
-		<a href="#" class="easyui-linkbutton" iconCls="icon-edit" plain="true" onclick="manage_tool.edit();">Update</a> 
-		<a href="#" class="easyui-linkbutton" iconCls="icon-cancel" plain="true" onclick="manage_tool.remove();">Delete</a> 
+		<a class="easyui-linkbutton" iconCls="icon-add" plain="true" onclick="manage_tool.add();">Add</a> 
+		<a class="easyui-linkbutton" iconCls="icon-edit" plain="true" onclick="manage_tool.edit();">Update</a> 
+		<a class="easyui-linkbutton" iconCls="icon-cancel" plain="true" onclick="manage_tool.remove();">Delete</a> 
 		&nbsp;&nbsp;&nbsp;&nbsp;
 		Search by name:<input type="text" class="textbox" name="search_manager" style="width:110px"> 
 		Date From<input type="text" name="date_from" class="easyui-datebox" editable="false" style="width:110px"> 
@@ -32,5 +38,12 @@
 		<a href="#" class="easyui-linkbutton" iconCls="icon-search" onclick="manage_tool.search();">Search</a>
 	</div>
 </div>
+
+<form id="student_add" style="margin:0;padding:5px 0 0 25px;color:#333;">
+	<p>Student S_ID <input type="text" name="sid" class="textbox" style="width:200px;"></p>
+	<p>Student Name <input type="text" name="sname" class="textbox" style="width:200px;"></p>
+	<p>Student Age  <input type="text" name="age" class="textbox" style="width:200px;"></p>
+	<p>Student Email<input type="text" name="email" class="textbox" style="width:200px;"></p>
+</form>
 
 <script type="text/javascript" src="<%=basePath%>js/student.js"></script>

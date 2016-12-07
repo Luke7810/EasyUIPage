@@ -7,16 +7,25 @@
 	<!-- 在开发阶段，实现热部署，可以加入如下常量 -->
 	<constant name="struts.devMode" value="true"></constant>
 	<constant name="struts.i18n.encoding" value="UTF-8" />
-	<constant name="struts.enable.DynamicMethodInvocation" value="true"></constant>
 
 	<package name="json" extends="struts-default">
+		<!-- Student List action -->
 		<action name="stulist" class="studentAction" method="getStu">
 			<result name="ajax-success" type="stream">
 				<param name="contentType">text/html</param>
 				<param name="inputName">inputStream</param>
 			</result>
 		</action>
+		
+		<!-- Add a new Student Action -->
+		<action name="addStudent" class="studentAction" method="addStu">
+			<result name="ajax-success" type="stream">
+				<param name="contentType">text/html</param>
+				<param name="inputName">inputStream</param>
+			</result>
+		</action>
 
+		<!-- Admin Login Action -->
 		<action name="loginAction" class="accessAction" method="checkAdminLogin">
 			<result name="login" type="stream">
 				<param name="contentType">text/html</param>
@@ -24,6 +33,7 @@
 			</result>
 		</action>
 
+		<!-- Admin Logout Action -->
 		<action name="logoutAction" class="accessAction" method="adminLogout">
 			<result name="logout" type="stream">
 				<param name="contentType">text/html</param>

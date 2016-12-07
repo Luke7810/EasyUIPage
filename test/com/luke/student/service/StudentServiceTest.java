@@ -31,7 +31,47 @@ public class StudentServiceTest {
 		for(Student s : list){
 			System.out.println("*********"+s.getSname());
 		}
+	}
+	
+	@Test
+	public void testGetStById(){
+		ApplicationContext ac = new ClassPathXmlApplicationContext("beans.xml");
+		StudentService uis = (StudentService) ac.getBean("studentService");
+		
+		Student st = uis.getStById(1);
+		System.out.println("***************"+st.getEmail());
 		
 	}
-
+	
+	@Test
+	public void testAddSt(){
+		Student st = new Student();
+		st.setAge(40);
+		st.setEmail("sdsde@sdsd.com");
+		st.setSid("A001");
+		st.setSname("Zhang San");
+		
+		ApplicationContext ac = new ClassPathXmlApplicationContext("beans.xml");
+		StudentService uis = (StudentService) ac.getBean("studentService");
+		
+		System.out.println(uis.addStudent(st));
+	}
+	
+	@Test
+	public void testDeleteSt() {
+		ApplicationContext ac = new ClassPathXmlApplicationContext("beans.xml");
+		StudentService uis = (StudentService) ac.getBean("studentService");
+		
+		System.out.println(uis.removeStudent(13));
+	}
+	
+	@Test
+	public void testUpdateSt(){
+		ApplicationContext ac = new ClassPathXmlApplicationContext("beans.xml");
+		StudentService uis = (StudentService) ac.getBean("studentService");
+		
+		Student st = uis.getStById(12);
+		st.setEmail("11111@qq.com");
+		System.out.println(uis.changeStudent(st));
+	}
 }
