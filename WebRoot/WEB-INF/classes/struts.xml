@@ -24,6 +24,22 @@
 				<param name="inputName">inputStream</param>
 			</result>
 		</action>
+		
+		<!-- Edit function: Get Student Information -->
+		<action name="getStudent" class="studentAction" method="getStuInfor">
+			<result name="ajax-success" type="stream">
+				<param name="contentType">text/html</param>
+				<param name="inputName">inputStream</param>
+			</result>
+		</action>
+		
+		<!-- Edit function: Update Student Information -->
+		<action name="updateStudent" class="studentAction" method="updateStu">
+			<result name="ajax-success" type="stream">
+				<param name="contentType">text/html</param>
+				<param name="inputName">inputStream</param>
+			</result>
+		</action>
 
 		<!-- Admin Login Action -->
 		<action name="loginAction" class="accessAction" method="checkAdminLogin">

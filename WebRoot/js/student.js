@@ -97,6 +97,63 @@ $(function() {
 		}],
 	});
 	
+	//--------show edit student form--------------------
+	$('#student_edit').dialog({
+		width : 350,
+		title : 'add new student',
+		modal : true,
+		closed : true,
+		iconCls : 'icon-edit',
+		buttons : [{
+			text : 'Submit',
+			iconCls : 'icon-save',
+			handler : function () {
+				if ($('#student_edit').form('validate')) {
+					//-------Ajax add a new user--------
+					$.ajax({
+						url : 'updateStudent.action',
+						type : 'post',
+						data: {
+							id:		$('input[name="sid_edit"]').val(),
+							sid:	$('input[name="sid_edit"]').val(),
+							sname:	$('input[name="sname_edit"]').val(),
+							age:	$('input[name="age_edit"]').val(),
+							email:	$('input[name="email_edit"]').val()
+						},
+						//-----before send message--------
+						beforeSend : function () {
+							$.messager.progress({
+								text : 'Updating the student...',
+							});
+						},
+						//-----check the return value----------
+						success : function (data, response, status) {
+							$.messager.progress('close');
+							
+							if(data > 0) {
+								$.messager.show({
+									title : 'Alert',
+									msg : 'Student information changed!',
+								});
+								$('#student_edit').dialog('close').form('reset');
+								$('#dg').datagrid('reload');
+							}else{
+								$.messager.alert('Update failed!', 'Can not updated this studend, please try again!', 'warning');
+							}
+						}
+					});
+					//----------------------------------
+				}
+			},
+		},{
+			text : 'Cancel',
+			iconCls : 'icon-undo',
+			handler : function () {
+				$('#student_edit').dialog('close').form('reset');
+			},
+		}],
+	});
+	
 	//------validate sid--------------
 	$('input[name="sid"]').validatebox({
 		required : true,
@@ -104,6 +161,7 @@ $(function() {
 		missingMessage : 'Please input S_ID',
 		invalidMessage : 'S_ID leagth is between 2 to 20',
 	});
+	
 	
 	//------validate sname--------------
 	$('input[name="sname"]').validatebox({
@@ -113,8 +171,22 @@ $(function() {
 		invalidMessage : 'Student Name leagth is between 2 to 20',
 	});
 	
-	//------validate sname--------------
+	//------validate sname in Edit--------------
+	$('input[name="sname_edit"]').validatebox({
+		required : true,
+		validType : 'length[2,20]',
+		missingMessage : 'Please input Student Name',
+		invalidMessage : 'Student Name leagth is between 2 to 20',
+	});
+	
+	//------validate age--------------
 	$('input[name="age"]').validatebox({
+		required : true,
+		missingMessage : 'Please input Student age',
+	});
+	
+	//------validate age in Edit--------------
+	$('input[name="age_edit"]').validatebox({
 		required : true,
 		missingMessage : 'Please input Student age',
 	});
@@ -122,9 +194,53 @@ $(function() {
 	
 	//-----Tool bar all JS code------------------
 	manage_tool = {
+			//----Tool bar click add ------------------
 			add : function () {
 				$('#student_add').dialog('open');
 				$('input[name="sid"]').focus();
+			},
+			//----- Tool bar click edit ---------------
+			edit : function () {
+				var rows = $('#dg').datagrid('getSelections');
+				if (rows.length > 1) {
+					$.messager.alert('Warning!', 'Please select just 1 item to edit!', 'warning');
+				}else if(rows.length == 0){
+					$.messager.alert('Warning!', 'Please select just 1 item to edit!', 'warning');
+				}else if(rows.length == 1){
+					$.ajax({
+						url  : 'getStudent.action',
+						type : 'post',
+						dataType: "json",
+						data : {
+							id : rows[0].id,
+						}, 
+						//-----before send message--------
+						beforeSend : function () {
+							$.messager.progress({
+								text : 'Loading student information...',
+							});
+						},
+						//----get student information
+						success : function (data, response, status) {
+							$.messager.progress('close');
+							if(data){
+								//-----Open the edit form ------
+								$('#student_edit').form('load', {
+									id 			: data.student.id,
+									sid_edit	: data.student.sid,
+									sname_edit	: data.student.sname,
+									age_edit	: data.student.age,
+									email_edit	: data.student.email
+									
+								}).dialog('open');
+								
+							}else{
+								$.messager.alert('Get information failed', 'Unknow reason failed, please try again!', 'warning');
+							}
+						},
+						
+					});
+				}
 			},
 		};
 	
