@@ -76,7 +76,7 @@
 			<tx:method name="get*" read-only="true" />
 			<tx:method name="change*" propagation="REQUIRED" />
 			<tx:method name="add*" propagation="REQUIRED" />
-			<tx:method name="delete*" propagation="REQUIRED" />
+			<tx:method name="remove*" propagation="REQUIRED" />
 		</tx:attributes>
 	</tx:advice>
 

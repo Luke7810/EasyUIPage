@@ -40,7 +40,15 @@
 				<param name="inputName">inputStream</param>
 			</result>
 		</action>
-
+	
+		<!-- Delete Student Action -->
+		<action name="deleteStudent" class="studentAction" method="deleteStu">
+			<result name="ajax-success" type="stream">
+				<param name="contentType">text/html</param>
+				<param name="inputName">inputStream</param>
+			</result>
+		</action>
+		
 		<!-- Admin Login Action -->
 		<action name="loginAction" class="accessAction" method="checkAdminLogin">
 			<result name="login" type="stream">
