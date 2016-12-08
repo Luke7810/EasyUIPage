@@ -39,11 +39,22 @@
 	</div>
 </div>
 
+<!-- Student 的添加界面 -->
 <form id="student_add" style="margin:0;padding:5px 0 0 25px;color:#333;">
 	<p>Student S_ID <input type="text" name="sid" class="textbox" style="width:200px;"></p>
 	<p>Student Name <input type="text" name="sname" class="textbox" style="width:200px;"></p>
 	<p>Student Age  <input type="text" name="age" class="textbox" style="width:200px;"></p>
 	<p>Student Email<input type="text" name="email" class="textbox" style="width:200px;"></p>
 </form>
+
+<!-- Student 的修改界面 -->
+<form id="student_edit" style="margin:0;padding:5px 0 0 25px;color:#333;">
+	<input type="hidden" name="id" class="textbox" style="width:200px;">
+	<p>Student S_ID <input type="text" name="sid_edit" disabled="true" class="textbox" style="width:200px;"></p>
+	<p>Student Name <input type="text" name="sname_edit" class="textbox" style="width:200px;"></p>
+	<p>Student Age <input type="text" name="age_edit" class="textbox" style="width:200px;"></p>
+	<p>Student Email <input type="text" name="email_edit" class="textbox" style="width:200px;"></p>
+</form>
+
 
 <script type="text/javascript" src="<%=basePath%>js/student.js"></script>
