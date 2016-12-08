@@ -34,6 +34,8 @@ public class StudentAction extends ActionSupport {
 	private String sname;
 	private int age;
 	private String email;
+	private String ids;
+	
 
 	public String getStu() {
 
@@ -110,6 +112,31 @@ public class StudentAction extends ActionSupport {
 
 		return "ajax-success";
 	}
+	
+	public String deleteStu() {
+		
+		String array_id[] = ids.split(",");
+		boolean flag = true;
+		try {
+			for (int i = 0; i < array_id.length; i++) {
+				if (studentService.removeStudent(Integer.parseInt(array_id[i]))) {
+					System.out.println("**** id: "+array_id[i]+ " be deleted!");
+				} else {
+					flag = false;
+				}
+			}
+			
+			if(flag){
+				inputStream = new ByteArrayInputStream("1".getBytes("UTF-8"));
+			}else{
+				inputStream = new ByteArrayInputStream("0".getBytes("UTF-8"));
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return "ajax-success";
+	}
 
 	// -----------All getter and setter----------------------
 	public StudentService getStudentService() {
@@ -183,6 +210,14 @@ public class StudentAction extends ActionSupport {
 
 	public void setEmail(String email) {
 		this.email = email;
+	}
+
+	public String getIds() {
+		return ids;
+	}
+
+	public void setIds(String ids) {
+		this.ids = ids;
 	}
 
 }

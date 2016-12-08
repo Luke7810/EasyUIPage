@@ -242,6 +242,48 @@ $(function() {
 					});
 				}
 			},
+			
+			//-------Tool bar delete click--------
+			remove : function () {
+				var rows = $('#dg').datagrid('getSelections');
+				if (rows.length > 0) {
+					$.messager.confirm('Confirm Action', 'Are you sure you want to delete items?', function () {
+						var ids = [];
+						for (var i = 0; i < rows.length; i ++) {
+							ids.push(rows[i].id);
+						}
+						//console.log(ids.join(','));
+						$.ajax({
+							type : 'POST',
+							url : 'deleteStudent.action',
+							data : {
+								ids : ids.join(','),
+							},
+							//-----before send message-------
+							beforeSend : function () {
+								$.messager.progress({
+									text : 'Deleting student information...',
+								});
+							},
+							//-----success delete ----------
+							success : function (data) {
+								$.messager.progress('close');
+								if(data > 0) {
+									$('#dg').datagrid('loaded');
+									$('#dg').datagrid('load');
+									$('#dg').datagrid('unselectAll');
+									$.messager.show({
+										title : 'Alert',
+										msg : data + ' items have been deleted!',
+									});
+								}
+							},
+						});
+					});
+				}else{
+					$.messager.alert('Delete Action Warning', 'Please select least one item to delete!', 'warning');
+				}
+			},
 		};
 	
 });

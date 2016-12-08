@@ -41,6 +41,7 @@ public class StudentService {
 			studentDao.updateStudent(st);
 			return true;
 		} catch (Exception e) {
+			e.printStackTrace();
 		return false;
 		}
 	}
@@ -51,6 +52,7 @@ public class StudentService {
 			studentDao.deleteStudent(id);
 			return true;
 		} catch (Exception e) {
+			e.printStackTrace();
 			return false;
 		}
 	}
