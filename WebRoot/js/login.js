@@ -6,7 +6,7 @@ $(function() {
 		width : 300,
 		height : 180,
 		modal : true,
-		iconCls : 'icon-login',
+		iconCls : 'icon-ok',
 		buttons : '#btn',
 	});
 
@@ -55,7 +55,7 @@ $(function() {
 						success : function(data, response, status) {
 							$.messager.progress('close');
 							if (data > 0) {
-								location.href = 'index.jsp';
+								location.href = 'index.action';
 							} else {
 								$.messager.alert('login failed！', 'user name or password error!',
 										'warning', function() {

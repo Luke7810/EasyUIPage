@@ -8,7 +8,43 @@
 	<constant name="struts.devMode" value="true"></constant>
 	<constant name="struts.i18n.encoding" value="UTF-8" />
 
-	<package name="json" extends="struts-default">
+	<package name="json" extends="struts-default" namespace="/">
+
+		<!-- 自定义拦截器栈 -->
+		<interceptors>
+			<interceptor name="loginInterceptor"
+				class="com.luke.student.util.CheckLoginInterceptor" />
+			<interceptor-stack name="teamwareStack">
+				<interceptor-ref name="defaultStack" />
+				<interceptor-ref name="loginInterceptor" />
+			</interceptor-stack>
+		</interceptors>
+		<!-- 使用自己的拦截器栈作为默认拦截器栈 -->
+		<default-interceptor-ref name="teamwareStack" />
+
+		<!-- 定义全局Result -->
+		<global-results>
+			<result name="mainpage">
+				/login.jsp
+			</result>
+		</global-results>
+
+		<!-- Welcome form show -->
+		<action name="welcome" class="accessAction" method="welcomePage">
+			<result>/login.jsp</result>
+		</action>
+
+		<!-- Index form show -->
+		<action name="index" class="accessAction" method="indexPage">
+			<result>/index.jsp</result>
+
+		</action>
+
+		<!-- Show Student Page -->
+		<action name="student" class="studentAction" method="studentPage">
+			<result>/student.jsp</result>
+		</action>
+
 		<!-- Student List action -->
 		<action name="stulist" class="studentAction" method="getStu">
 			<result name="ajax-success" type="stream">
@@ -16,7 +52,7 @@
 				<param name="inputName">inputStream</param>
 			</result>
 		</action>
-		
+
 		<!-- Add a new Student Action -->
 		<action name="addStudent" class="studentAction" method="addStu">
 			<result name="ajax-success" type="stream">
@@ -24,7 +60,7 @@
 				<param name="inputName">inputStream</param>
 			</result>
 		</action>
-		
+
 		<!-- Edit function: Get Student Information -->
 		<action name="getStudent" class="studentAction" method="getStuInfor">
 			<result name="ajax-success" type="stream">
@@ -32,7 +68,7 @@
 				<param name="inputName">inputStream</param>
 			</result>
 		</action>
-		
+
 		<!-- Edit function: Update Student Information -->
 		<action name="updateStudent" class="studentAction" method="updateStu">
 			<result name="ajax-success" type="stream">
@@ -40,7 +76,7 @@
 				<param name="inputName">inputStream</param>
 			</result>
 		</action>
-	
+
 		<!-- Delete Student Action -->
 		<action name="deleteStudent" class="studentAction" method="deleteStu">
 			<result name="ajax-success" type="stream">
@@ -48,7 +84,7 @@
 				<param name="inputName">inputStream</param>
 			</result>
 		</action>
-		
+
 		<!-- Admin Login Action -->
 		<action name="loginAction" class="accessAction" method="checkAdminLogin">
 			<result name="login" type="stream">

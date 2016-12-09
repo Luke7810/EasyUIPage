@@ -4,3 +4,6 @@ encoding//WebRoot/js/index.js=UTF-8
 encoding//WebRoot/js/login.js=UTF-8
 encoding//WebRoot/js/student.js=UTF-8
 encoding//WebRoot/student.jsp=UTF-8
+encoding//WebRoot/welcome.html=UTF-8
+encoding//src/com/luke/student/util/CheckLoginInterceptor.java=UTF-8
+encoding//src/com/luke/student/util/JspFilter.java=UTF-8
