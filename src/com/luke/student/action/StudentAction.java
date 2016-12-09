@@ -20,6 +20,7 @@ import org.springframework.stereotype.Component;
 
 import com.luke.student.module.Student;
 import com.luke.student.service.StudentService;
+import com.opensymphony.xwork2.Action;
 import com.opensymphony.xwork2.ActionSupport;
 
 @Component("studentAction")
@@ -36,6 +37,9 @@ public class StudentAction extends ActionSupport {
 	private String email;
 	private String ids;
 	
+	public String studentPage() {
+		return Action.SUCCESS;
+	}
 
 	public String getStu() {
 
@@ -79,6 +83,7 @@ public class StudentAction extends ActionSupport {
 		st.setEmail(email);
 		st.setSid(sid);
 		st.setSname(sname);
+		
 		
 		try {
 			if (studentService.changeStudent(st)) {

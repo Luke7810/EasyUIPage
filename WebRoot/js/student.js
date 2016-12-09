@@ -114,7 +114,7 @@ $(function() {
 						url : 'updateStudent.action',
 						type : 'post',
 						data: {
-							id:		$('input[name="sid_edit"]').val(),
+							id:		$('input[name="id"]').val(),
 							sid:	$('input[name="sid_edit"]').val(),
 							sname:	$('input[name="sname_edit"]').val(),
 							age:	$('input[name="age_edit"]').val(),

@@ -15,7 +15,7 @@ $(function() {
 									success : function(data, response, status) {
 										$.messager.progress('close');
 										if (data > 0) {
-											location.href = 'login.jsp';
+											location.href = 'welcome.action';
 										} else {
 											$.messager
 													.alert(
@@ -55,7 +55,7 @@ $(function() {
 						title : node.text,
 						closable : true,
 						iconCls : node.iconCls,
-						href : node.url + '.jsp',
+						href : node.url + '.action',
 					});
 				}
 			}

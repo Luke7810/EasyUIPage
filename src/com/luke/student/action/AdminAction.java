@@ -12,6 +12,7 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
 import com.luke.student.service.AdminService;
+import com.opensymphony.xwork2.Action;
 
 @Component("accessAction")
 @Scope("prototype")
@@ -21,6 +22,14 @@ public class AdminAction implements SessionAware{
 	private String adminpwd;
 	private InputStream inputStream;
 	private Map<String, Object> session;
+	
+	public String welcomePage() {
+		return Action.SUCCESS;
+	}
+	
+	public String indexPage() {
+		return Action.SUCCESS;
+	}
 	
 	public String checkAdminLogin() {
 		try {
@@ -42,6 +51,8 @@ public class AdminAction implements SessionAware{
 		inputStream = new ByteArrayInputStream("1".getBytes("UTF-8"));
 		return "logout";
 	}
+	
+	
 	
 	//-------All Setter and getter---------
 	public AdminService getAdminService() {
