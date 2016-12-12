@@ -28,6 +28,14 @@
 				/login.jsp
 			</result>
 		</global-results>
+		
+		<!-- Menu Tree show -->
+		<action name="menulist" class="menuTreeAction" method="getMenuTree">
+			<result name="ajax-success" type="stream">
+				<param name="contentType">text/html</param>
+				<param name="inputName">inputStream</param>
+			</result>
+		</action>
 
 		<!-- Welcome form show -->
 		<action name="welcome" class="accessAction" method="welcomePage">
