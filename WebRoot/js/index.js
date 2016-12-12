@@ -31,7 +31,8 @@ $(function() {
 
 	// tree 结构
 	$('#nav').tree({
-		url : 'data/tree_data1.json',
+		url : 'menulist.action',
+		//url : 'data/tree_data2.json',
 		method: 'get',
 		animate:true,
 		dnd: true,
