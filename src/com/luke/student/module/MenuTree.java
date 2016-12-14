@@ -20,6 +20,7 @@ public class MenuTree {
 	private String text;
 	private String url;
 	private String iconCls;
+	private String access;
 	private Set<MenuTree> children = new HashSet<MenuTree>();
 	private MenuTree parent;
 	
@@ -73,6 +74,12 @@ public class MenuTree {
 		return "MenuTree [id=" + id + ", text=" + text + ", url=" + url
 				+ ", iconCls=" + iconCls + ", children=" + children
 				+ ", parent=" + parent + "]";
+	}
+	public String getAccess() {
+		return access;
+	}
+	public void setAccess(String access) {
+		this.access = access;
 	}
 	
 	
