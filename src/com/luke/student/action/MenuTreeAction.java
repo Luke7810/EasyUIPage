@@ -7,6 +7,7 @@ import java.util.ArrayList;
 
 import javax.annotation.Resource;
 
+import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
 import com.alibaba.fastjson.JSON;
@@ -15,6 +16,7 @@ import com.luke.student.service.MenuTreeService;
 
 
 @Component("menuTreeAction")
+@Scope("prototype")
 public class MenuTreeAction {
 	private MenuTreeService menuTreeService;
 	private InputStream inputStream;

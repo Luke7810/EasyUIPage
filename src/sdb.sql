@@ -5,63 +5,62 @@ MySQL - 5.1.62-community
 */
 /*!40101 SET NAMES utf8 */;
 
-create table `student` (
-	`id` int ,
-	`sname` varchar ,
-	`age` int ,
-	`sid` varchar ,
-	`email` varchar 
-); 
+/* Admin Table */
+CREATE TABLE `admininfor` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `adminname` varchar(20) NOT NULL,
+  `adminpwd` varchar(20) NOT NULL,
+  `author` varchar(50) DEFAULT NULL,
+  `createdate` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8
 
-CREATE TABLE `admininfor`(
-`id` INT NOT NULL AUTO_INCREMENT,
-`adminname` VARCHAR(20) NOT NULL,
-`adminpwd` VARCHAR(20) NOT NULL,
-`author` VARCHAR(50),
-`createdate` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
-PRIMARY KEY(`id`)
-) ENGINE=INNODB DEFAULT CHARSET=utf8;
+/* Admin Data */
+insert into `admininfor` (`id`, `adminname`, `adminpwd`, `author`, `createdate`) values('1','admin-1','12345','1,2,3','2016-12-05 14:38:10');
+insert into `admininfor` (`id`, `adminname`, `adminpwd`, `author`, `createdate`) values('2','admin-2','23456','1','2016-12-05 14:42:44');
+insert into `admininfor` (`id`, `adminname`, `adminpwd`, `author`, `createdate`) values('3','admin-3','11111','2','2016-12-05 14:42:44');
 
-INSERT INTO `admininfor` (`id`, `adminname`, `adminpwd`, `author`, `createdate`) VALUES (NULL, 'admin-1', '12345', '1,2,3', CURRENT_TIMESTAMP); 
-INSERT INTO `admininfor` (`id`, `adminname`, `adminpwd`, `author`, `createdate`) VALUES (NULL, 'admin-2', '23456', '1,3', CURRENT_TIMESTAMP); 
-INSERT INTO `admininfor` (`id`, `adminname`, `adminpwd`, `author`, `createdate`) VALUES (NULL, 'admin-3', '11111', '1', CURRENT_TIMESTAMP); 
+/* Student Table */
+CREATE TABLE `student` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `sid` varchar(20) NOT NULL,
+  `sname` varchar(50) NOT NULL,
+  `age` int(11) DEFAULT NULL,
+  `email` varchar(50) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8
 
-insert into `student` (`id`, `sname`, `age`, `sid`, `email`) values('1','åˆ˜å¾·å�Ž','40','001','kjhjdf@sdf');
-insert into `student` (`id`, `sname`, `age`, `sid`, `email`) values('2','åˆ˜å¼º','38','002','sdd123@sds');
-insert into `student` (`id`, `sname`, `age`, `sid`, `email`) values('3','å¼ å­¦å�‹','50','003','4544@dff.c');
-insert into `student` (`id`, `sname`, `age`, `sid`, `email`) values('4','å¼ æƒ å¦¹','30','004','2344@dfd.c');
-insert into `student` (`id`, `sname`, `age`, `sid`, `email`) values('5','å­¦ç”Ÿ1','20','005','3434@565.c');
-insert into `student` (`id`, `sname`, `age`, `sid`, `email`) values('6','å­¦ç”Ÿ2','30','006','5454@dfd.c');
-insert into `student` (`id`, `sname`, `age`, `sid`, `email`) values('7','å­¦ç”Ÿ3','50','007','232@dfd.co');
-insert into `student` (`id`, `sname`, `age`, `sid`, `email`) values('8','å­¦ç”Ÿ4','20','008','9898@65');
-insert into `student` (`id`, `sname`, `age`, `sid`, `email`) values('9','å­¦ç”Ÿ5','10','009','989@fgd');
-insert into `student` (`id`, `sname`, `age`, `sid`, `email`) values('10','å­¦ç”Ÿ6','30','010','2323@dssd');
-insert into `student` (`id`, `sname`, `age`, `sid`, `email`) values('11','å­¦ç”Ÿ7','23','011','48@sds');
-insert into `student` (`id`, `sname`, `age`, `sid`, `email`) values('12','å­¦ç”Ÿ8','12','012','879@dfd');
+/* Student Data */
+insert into `student` (`id`, `sid`, `sname`, `age`, `email`) values('5','005','学生1','20','3434@565.c');
+insert into `student` (`id`, `sid`, `sname`, `age`, `email`) values('6','006','学生2','30','5454@dfd.c');
+insert into `student` (`id`, `sid`, `sname`, `age`, `email`) values('7','007','学生3','50','232@dfd.co');
+insert into `student` (`id`, `sid`, `sname`, `age`, `email`) values('8','008','学生4','20','9898@65');
+insert into `student` (`id`, `sid`, `sname`, `age`, `email`) values('9','009','学生5','10','989@fgd');
+insert into `student` (`id`, `sid`, `sname`, `age`, `email`) values('10','010','学生6','30','2323@dssd');
+insert into `student` (`id`, `sid`, `sname`, `age`, `email`) values('11','011','学生7','23','48@sds');
+insert into `student` (`id`, `sid`, `sname`, `age`, `email`) values('12','012','学生8','12','11111@qq.com');
+insert into `student` (`id`, `sid`, `sname`, `age`, `email`) values('15','111','222','33','44');
+insert into `student` (`id`, `sid`, `sname`, `age`, `email`) values('16','B001','测试2','12','ssds@ssd.com');
+insert into `student` (`id`, `sid`, `sname`, `age`, `email`) values('17','B002','Liu Zhan','34','124232@sdsd.com');
+insert into `student` (`id`, `sid`, `sname`, `age`, `email`) values('18','B003','Ce Shi','24','iuf@sdse.com');
 
+/* Menu Table */
+CREATE TABLE `tree` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `text` varchar(30) NOT NULL,
+  `iconCls` varchar(30) DEFAULT NULL,
+  `url` varchar(30) DEFAULT NULL,
+  `pid` int(11) DEFAULT NULL,
+  `isleaf` int(11) DEFAULT NULL,
+  `access` varchar(30) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8
 
-CREATE TABLE `tree`( 
-`id` INT NOT NULL AUTO_INCREMENT, 
-`text` VARCHAR(30) NOT NULL, 
-`iconCls` VARCHAR(30), 
-`url` VARCHAR(30), 
-`pid` INT, `isleaf` INT, 
-PRIMARY KEY (`id`) 
-); 
-
-
-create table `tree` (
-	`id` int ,
-	`text` varchar ,
-	`iconCls` varchar ,
-	`url` varchar ,
-	`pid` int ,
-	`isleaf` int 
-); 
-insert into `tree` (`id`, `text`, `iconCls`, `url`, `pid`, `isleaf`) values('8','User Menu','icon-sum','',NULL,NULL);
-insert into `tree` (`id`, `text`, `iconCls`, `url`, `pid`, `isleaf`) values('9','Tools','icon-cut','','8',NULL);
-insert into `tree` (`id`, `text`, `iconCls`, `url`, `pid`, `isleaf`) values('10','Tools Form 2','','Test2','9',NULL);
-insert into `tree` (`id`, `text`, `iconCls`, `url`, `pid`, `isleaf`) values('11','Tools Form 8','','Test1','9',NULL);
-insert into `tree` (`id`, `text`, `iconCls`, `url`, `pid`, `isleaf`) values('12','Actions','icon-save','','8',NULL);
-insert into `tree` (`id`, `text`, `iconCls`, `url`, `pid`, `isleaf`) values('13','User Form','','Datagrid','12',NULL);
-insert into `tree` (`id`, `text`, `iconCls`, `url`, `pid`, `isleaf`) values('14','User List','','student','12',NULL);
+/* Menu Data */
+insert into `tree` (`id`, `text`, `iconCls`, `url`, `pid`, `isleaf`, `access`) values('8','User Menu','icon-sum','','0','1','1,2');
+insert into `tree` (`id`, `text`, `iconCls`, `url`, `pid`, `isleaf`, `access`) values('9','Tools','icon-cut','','8','1','1');
+insert into `tree` (`id`, `text`, `iconCls`, `url`, `pid`, `isleaf`, `access`) values('10','Tools Form 2','','Test2','9','1','1');
+insert into `tree` (`id`, `text`, `iconCls`, `url`, `pid`, `isleaf`, `access`) values('11','Tools Form 8','','Test1','9','1','1');
+insert into `tree` (`id`, `text`, `iconCls`, `url`, `pid`, `isleaf`, `access`) values('12','Actions','icon-save','','8','2','2');
+insert into `tree` (`id`, `text`, `iconCls`, `url`, `pid`, `isleaf`, `access`) values('13','User Form','','Datagrid','12','2','2');
+insert into `tree` (`id`, `text`, `iconCls`, `url`, `pid`, `isleaf`, `access`) values('14','User List','','student','12','2','2');

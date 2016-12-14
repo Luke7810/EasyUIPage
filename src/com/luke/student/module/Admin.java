@@ -10,6 +10,8 @@ public class Admin {
 	private int id;
 	private String adminname;
 	private String adminpwd;
+	private String author;
+	
 	
 	@Id
 	public int getId() {
@@ -29,6 +31,12 @@ public class Admin {
 	}
 	public void setAdminpwd(String adminpwd) {
 		this.adminpwd = adminpwd;
+	}
+	public String getAuthor() {
+		return author;
+	}
+	public void setAuthor(String author) {
+		this.author = author;
 	}
 	
 	

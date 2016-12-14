@@ -30,13 +30,21 @@
 		</global-results>
 		
 		<!-- Menu Tree show -->
+		<!-- 
 		<action name="menulist" class="menuTreeAction" method="getMenuTree">
 			<result name="ajax-success" type="stream">
 				<param name="contentType">text/html</param>
 				<param name="inputName">inputStream</param>
 			</result>
 		</action>
-
+		 -->
+		 <action name="menulist" class="menuTreeV2Action" method="getMenubyAccess">
+			<result name="ajax-success" type="stream">
+				<param name="contentType">text/html</param>
+				<param name="inputName">inputStream</param>
+			</result>
+		</action>
+		 
 		<!-- Welcome form show -->
 		<action name="welcome" class="accessAction" method="welcomePage">
 			<result>/login.jsp</result>
